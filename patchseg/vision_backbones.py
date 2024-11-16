@@ -70,6 +70,11 @@ EVA_BACKBONES = {
     "eva02-vit-l": "eva02_large_patch14_clip_224.merged2b",
 }
 
+DBOT_BACKBONES = {
+    "dbot-clip-vit-b": "vit_base_patch16_dbot_clip_224",
+    "dbot-random-vit-b": "vit_base_patch16_dbot_random_224",
+}
+
 # Merge into single dict.
 TIMM_BACKBONES = {
     **IN1K_BACKBONES,
@@ -83,6 +88,7 @@ TIMM_BACKBONES = {
     **MOCO_BACKBONES,
     **BEIT_BACKBONES,
     **EVA_BACKBONES,
+    **DBOT_BACKBONES,
 }
 
 
