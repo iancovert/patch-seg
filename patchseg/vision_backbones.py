@@ -7,6 +7,9 @@ from timm.models.vision_transformer import VisionTransformer
 from timm.models.beit import Beit
 from timm.models.eva import Eva
 
+from locality_alignment.backbones.dbot_clip import dBOTCLIPVisionTransformer
+from locality_alignment.backbones.dbot_random import dBOTRandomVisionTransformer
+
 # Groups of model configs.
 IN1K_BACKBONES = {
     "in1k-vit-t": "vit_tiny_patch16_224.augreg_in21k_ft_in1k",
@@ -110,7 +113,7 @@ def load_backbone(backbone_name: str) -> torch.nn.Module:
 
 def get_backbone_config(backbone: torch.nn.Module) -> dict:
     """Get configuration options from backbone model."""
-    if isinstance(backbone, (VisionTransformer, Beit, Eva)):
+    if isinstance(backbone, (VisionTransformer, Beit, Eva, dBOTCLIPVisionTransformer, dBOTRandomVisionTransformer)):
         data_cfg = timm.data.resolve_data_config(backbone.pretrained_cfg)
         config = {
             "image_mean": data_cfg["mean"],
